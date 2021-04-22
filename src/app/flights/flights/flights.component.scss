@@ -1,0 +1,16 @@
+.flights-container {
+  padding: 50px;
+}
+
+#new-flight-btn {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  font-size: 30px;
+}
+[class*="col-"] {
+  float: left;
+  padding-right: 1%;
+  padding-left: 4%;
+  padding-bottom: 5%;
+}

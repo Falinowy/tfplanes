@@ -1,0 +1,19 @@
+#delete-flight {
+  color: red;
+  cursor: pointer;
+  font-size: 42px;
+  float: right;
+}
+.center {
+  margin: 0 auto;
+  width: 80%;
+}
+.buttons {
+  float: right;
+}
+#float-right {
+margin-right: 10px;
+}
+h3 {
+  padding-top: 50px;
+}
