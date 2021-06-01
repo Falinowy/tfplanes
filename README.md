@@ -15,5 +15,5 @@ https://tfplanes.netlify.app/
 
 ### Testing credentials
 
-email: test@test.pl
-password: test123
+- email: test@test.pl
+- password: test123
