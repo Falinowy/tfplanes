@@ -4,11 +4,12 @@ import { LoginComponent } from './core/login/login.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { AuthGuard } from './core/services/auth.guard';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-//import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
+import { RegisterComponent } from './core/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
