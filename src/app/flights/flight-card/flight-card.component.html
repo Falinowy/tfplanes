@@ -1,17 +1,43 @@
-<div class="conteiner">
-  <div class="shadow card-content">
-    <div class="row">
-      <div class="col">
-        <p class="origin"> {{ flight.origin }}</p><br><br>
-        <p class="destination"> {{ flight.destination }}</p>
+<div class="flight-card">
+  <div class="flight-header">
+    <div class="badge">FLIGHT</div>
+    <div class="flight-code">{{ flight.code }}</div>
+    @if(flight.withSKPlanesDiscount) {
+      <div class="discount-badge">SK DISCOUNT</div>
+    }
+  </div>
+
+  <div class="flight-route">
+    <div class="location origin">
+      <span class="city">{{ flight.origin }}</span>
+      <span class="label">Departure</span>
+    </div>
+    
+    <div class="route-path">
+      <div class="line"></div>
+      <div class="icon-wrapper">
+        <mat-icon>flight</mat-icon>
       </div>
     </div>
-    <div class="row">
-      <div class="col"></div>
-      <p class="time">{{ flight.departureTime }} - {{ flight.returnTime }}</p>
+    
+    <div class="location destination">
+      <span class="city">{{ flight.destination }}</span>
+      <span class="label">Arrival</span>
     </div>
   </div>
-  <div class="icon-container shadow">
-    <mat-icon>airplanemode_active</mat-icon>
+  
+  <div class="flight-details">
+    <div class="time-row">
+      <div class="time-block">
+        <mat-icon class="small-icon">flight_takeoff</mat-icon>
+        <span class="time">{{ flight.departureTime }}</span>
+      </div>
+    </div>
+    <div class="time-row">
+      <div class="time-block">
+        <mat-icon class="small-icon">flight_land</mat-icon>
+        <span class="time">{{ flight.returnTime }}</span>
+      </div>
+    </div>
   </div>
 </div>

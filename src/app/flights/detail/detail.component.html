@@ -1,18 +1,73 @@
-<div class="row">
-  <div class="col">
-    <h3>
-      FLIGHT DETAILS
-      <mat-icon class="float-right" (click)="onCloseFlight()">close</mat-icon>
-    </h3>
-    <p class="label">Code: {{ flight.code }}</p>
-    <p class="label">Crew:</p>
-    <ul>
-      <li *ngFor="let member of flight.crew">
-        {{ member.name}}
-      </li>
-    </ul>
-    <button mat-raised-button color="primary" class="float-right"(click)="goToEditFlight()">
-      EDIT FLIGHT
+<div class="modern-dialog">
+  <h2 mat-dialog-title class="dialog-header">
+    <div class="d-flex align-items-center">
+      <mat-icon class="mr-2 text-primary">info</mat-icon>
+      Flight Details
+    </div>
+    <button mat-icon-button (click)="onCloseFlight()">
+      <mat-icon>close</mat-icon>
     </button>
-  </div>
+  </h2>
+
+  <mat-dialog-content class="modern-dialog-content">
+    <div class="flight-route-card">
+      <div class="card-top-row">
+        <div class="code-badge">
+          <mat-icon>tag</mat-icon>
+          {{ flight.code }}
+        </div>
+      </div>
+      
+      <div class="route-display">
+        <div class="location">
+          <span class="city">{{ flight.origin }}</span>
+          <span class="time">{{ flight.departureTime }}</span>
+        </div>
+        <div class="flight-path">
+          <div class="line"></div>
+          <mat-icon class="plane-icon">flight</mat-icon>
+          <div class="line"></div>
+        </div>
+        <div class="location">
+          <span class="city">{{ flight.destination }}</span>
+          <span class="time">{{ flight.returnTime }}</span>
+        </div>
+      </div>
+    </div>
+
+    @if (flight.additionalInformation) {
+      <div class="info-section">
+        <h4 class="section-title"><mat-icon>description</mat-icon> Additional Info</h4>
+        <p class="notes">{{ flight.additionalInformation }}</p>
+      </div>
+    }
+
+    <div class="info-section mt-4">
+      <h4 class="section-title"><mat-icon>group</mat-icon> Assigned Crew</h4>
+      @if (flight.crew?.length) {
+        <div class="crew-grid">
+          @for (member of flight.crew; track member.name) {
+            <div class="crew-member">
+              <div class="crew-avatar"><mat-icon>person</mat-icon></div>
+              <div class="crew-details">
+                <span class="crew-name">{{ member.name || 'Unknown' }}</span>
+                <span class="crew-role">{{ member.job | uppercase }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <p class="text-muted">No crew assigned to this flight.</p>
+      }
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end" class="modern-dialog-actions">
+    <button mat-stroked-button class="cancel-btn" (click)="onCloseFlight()">
+      Close
+    </button>
+    <button mat-flat-button color="primary" class="edit-btn" (click)="goToEditFlight()">
+      <mat-icon>edit</mat-icon> Edit Flight
+    </button>
+  </mat-dialog-actions>
 </div>

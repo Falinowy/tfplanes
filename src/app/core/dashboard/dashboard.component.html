@@ -1,10 +1,27 @@
-<mat-toolbar color="primary">
-  <div class="class container">
-    <img src="./assets/images/logo_tf.png" class="logoDashobard" routerLink="/dashboard">
-    <mat-icon class="logout-icon float-right" (click)="logout()">logout</mat-icon>
-    <span class="user-login float-right"> HI, {{ user.email }}!</span>
+<mat-toolbar class="modern-header">
+  <div class="container header-container">
+    <div class="logo-wrapper" routerLink="/dashboard">
+      <img src="./assets/images/logo_tf.png" class="logo-img" alt="TF Planes Logo">
+      <span class="brand-name">TF Planes</span>
+    </div>
+
+    <div class="user-actions">
+      <div class="user-profile">
+        <div class="avatar">
+          <mat-icon>person</mat-icon>
+        </div>
+        <div class="user-info">
+          <span class="greeting">Welcome back,</span>
+          <span class="email">{{ user?.email }}</span>
+        </div>
+      </div>
+      <button mat-icon-button class="logout-btn" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
   </div>
 </mat-toolbar>
-<div class="conteiner">
+
+<main class="main-content">
   <router-outlet></router-outlet>
-</div>
+</main>

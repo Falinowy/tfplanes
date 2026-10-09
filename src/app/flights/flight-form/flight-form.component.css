@@ -1,10 +1,76 @@
-.crew-container {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.flight-form {
+  font-family: 'Inter', sans-serif;
+  padding-bottom: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-icon[matPrefix] {
+  margin-right: 8px;
+  color: #718096;
+}
+
+.discount-checkbox {
+  margin: 8px 0 16px 0;
+  font-weight: 500;
+  color: #2e7d32;
+}
+
+.crew-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a202c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 16px 0;
+}
+
+.crew-section-title mat-icon {
+  color: #007bff;
+}
+
+.crew-container.modern-shadow {
   margin-top: 15px;
-  padding: 15px;
-  background: white;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.crew-container.modern-shadow:hover {
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.08);
+  border-color: rgba(0, 123, 255, 0.2);
 }
 
 .crew-header {
-  margin-bottom: 20px;
-  font-weight: bold;
+  margin-bottom: 12px;
 }
+
+.crew-title {
+  font-weight: 700;
+  color: #4a5568;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.add-crew-btn {
+  border-radius: 8px;
+  padding: 6px 0;
+  font-weight: 600;
+  border-width: 2px;
+}
+
+.mb-3 { margin-bottom: 1rem; }
+.mt-3 { margin-top: 1rem; }
+.w-100 { width: 100%; }
+.d-flex { display: flex; }
+.justify-content-between { justify-content: space-between; }
+.align-items-center { align-items: center; }

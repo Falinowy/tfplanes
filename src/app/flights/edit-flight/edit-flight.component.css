@@ -1,19 +1,75 @@
-#delete-flight {
-  color: red;
-  cursor: pointer;
-  font-size: 42px;
-  float: right;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+.edit-flight-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 123, 255, 0.08);
+  padding: 32px;
+  font-family: 'Inter', sans-serif;
 }
-.center {
-  margin: 0 auto;
-  width: 80%;
+
+.edit-flight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
 }
-.buttons {
-  float: right;
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-#float-right {
-margin-right: 10px;
+
+.title-container h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a202c;
+  letter-spacing: -0.5px;
 }
-h3 {
-  padding-top: 50px;
+
+.title-container h3 strong {
+  color: #007bff;
+}
+
+.header-icon {
+  color: #007bff;
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+.delete-btn mat-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.edit-flight-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.back-btn {
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.save-btn {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0 24px;
+}
+
+.save-btn mat-icon, .back-btn mat-icon {
+  margin-right: 4px;
 }

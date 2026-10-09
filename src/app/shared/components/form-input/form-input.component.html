@@ -1,0 +1,50 @@
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>{{ label }}</mat-label>
+  
+  @if (icon) {
+    <mat-icon matPrefix>{{ icon }}</mat-icon>
+  }
+  
+  @if (type !== 'textarea' && type !== 'select') {
+    <input matInput 
+           [type]="type" 
+           [placeholder]="placeholder" 
+           [(ngModel)]="value" 
+           [ngModelOptions]="{standalone: true}"
+           [attr.maxlength]="maxlength || null"
+           (ngModelChange)="onModelChange($event)"
+           (blur)="onTouched()">
+  }
+  
+  @if (type === 'textarea') {
+    <textarea matInput 
+           [placeholder]="placeholder" 
+           [(ngModel)]="value" 
+           [ngModelOptions]="{standalone: true}"
+           [attr.maxlength]="maxlength || null"
+           (ngModelChange)="onModelChange($event)"
+           (blur)="onTouched()"></textarea>
+  }
+  
+  @if (type === 'select') {
+    <mat-select [placeholder]="placeholder" 
+                [(ngModel)]="value" 
+                [ngModelOptions]="{standalone: true}"
+                (ngModelChange)="onModelChange($event)"
+                (blur)="onTouched()">
+      @for (option of options; track option.value) {
+        <mat-option [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      }
+    </mat-select>
+  }
+         
+  @if (controlDir?.control?.invalid && (controlDir?.control?.dirty || controlDir?.control?.touched)) {
+    <mat-error>
+      {{ getErrorMessage() }}
+    </mat-error>
+  }
+  
+  <ng-content select="mat-hint"></ng-content>
+</mat-form-field>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
@@ -7,13 +7,15 @@ import { Flight } from 'src/app/models/flight.model';
 import { FlightFormComponent } from '../flight-form/flight-form.component';
 
 @Component({
-  selector: 'app-edit-flight',
-  templateUrl: './edit-flight.component.html',
-  styleUrls: ['./edit-flight.component.css']
+    selector: 'app-edit-flight',
+    templateUrl: './edit-flight.component.html',
+    styleUrls: ['./edit-flight.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class EditFlightComponent {
-  @ViewChild('flightForm') flightForm: FlightFormComponent;
-  flight: Flight;
+  @ViewChild('flightForm') flightForm!: FlightFormComponent;
+  flight!: Flight;
 
   constructor(
     private flightsService: FlightsService,
@@ -49,7 +51,7 @@ export class EditFlightComponent {
     this.toast.open('Flight has been deleted!','', { panelClass: 'toast-success'})
   }
 
-  private onFailure(error) {
+  private onFailure(error: any) {
     this.toast.open(error.message,'', { panelClass: 'toast-error'});
   }
   backToFlights() {

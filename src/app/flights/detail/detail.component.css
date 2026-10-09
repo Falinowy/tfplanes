@@ -1,0 +1,207 @@
+.modern-dialog {
+  font-family: 'Inter', sans-serif;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  font-weight: 700;
+  color: #1a202c;
+  font-size: 20px;
+}
+
+.text-primary {
+  color: #007bff;
+}
+
+.mr-2 {
+  margin-right: 8px;
+}
+
+.modern-dialog-content {
+  padding: 24px !important;
+  background-color: #f8fafc;
+}
+
+.flight-route-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.code-badge {
+  background: #ebf4ff;
+  color: #3182ce;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.code-badge mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.route-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 35%;
+}
+
+.location:last-child {
+  text-align: right;
+}
+
+.city {
+  font-size: 24px;
+  font-weight: 800;
+  color: #2d3748;
+  word-wrap: break-word;
+  line-height: 1.2;
+}
+
+.time {
+  font-size: 14px;
+  color: #718096;
+  margin-top: 8px;
+}
+
+.flight-path {
+  display: flex;
+  align-items: center;
+  flex: 2;
+  padding: 0 16px;
+}
+
+.line {
+  flex: 1;
+  height: 2px;
+  background-color: #cbd5e0;
+}
+
+.plane-icon {
+  color: #007bff;
+  transform: rotate(90deg);
+  margin: 0 8px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.section-title mat-icon {
+  color: #007bff;
+}
+
+.notes {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  color: #4a5568;
+  border-left: 4px solid #007bff;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.crew-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.crew-member {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.crew-member:hover {
+  border-color: #cbd5e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.crew-avatar {
+  background: #edf2f7;
+  color: #718096;
+  border-radius: 50%;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.crew-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.crew-name {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.crew-role {
+  font-size: 12px;
+  color: #718096;
+}
+
+.modern-dialog-actions {
+  border-top: 1px solid #e2e8f0;
+  padding: 16px 24px !important;
+  background-color: white;
+}
+
+.edit-btn, .cancel-btn {
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.edit-btn mat-icon {
+  margin-right: 4px;
+}

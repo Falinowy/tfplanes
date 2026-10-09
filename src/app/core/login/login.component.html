@@ -10,7 +10,10 @@
       <input type="password" matInput placeholder="Password" [(ngModel)]="credentials.password" required>
       <mat-error>Password is required</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="login()">LOG IN</button>
+    <div style="display: flex; gap: 16px; justify-content: center; margin-top: 10px;">
+      <button mat-raised-button color="primary" (click)="login()">LOG IN</button>
+      <button mat-stroked-button color="primary" (click)="testLogin()">TEST LOGIN</button>
+    </div>
     <p>You don't have an account?</p>
     <button mat-raised-button color="accent" (click)="goToRegister()">REGISTER</button>
   </div>

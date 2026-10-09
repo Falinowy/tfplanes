@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
   credentials = {
@@ -21,11 +23,11 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.authService.register(this.credentials)
-      .then(user => {
+      .then((user: any) => {
         this.toast.open('Account created, please log in!', '', { panelClass: 'toast-success' }),
         this.route.navigate(['/login'])
       })
-      .catch(error => this.toast.open(error.message, '', { panelClass: 'toast-error' }));
+      .catch((error: any) => this.toast.open(error.message, '', { panelClass: 'toast-error' }));
   }
 
   login() {

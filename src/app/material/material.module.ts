@@ -9,7 +9,7 @@ import { MatSnackBarConfig, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } f
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDialogConfig } from '@angular/material/dialog/dialog-config'
+import { MatDialogConfig } from '@angular/material/dialog';
 
 const MAT_DIALOG_GLOBAL_CONFIG: MatDialogConfig = {
   width: '700px',

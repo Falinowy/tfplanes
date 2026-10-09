@@ -1,80 +1,118 @@
-<form [formGroup]="form">
+<form [formGroup]="form" class="flight-form">
   <div class="row">
-    <div class="col-sm-4">
-      <mat-form-field>
-        <input matInput formControlName="code" placeholder="Code" #input>
-        <mat-error *ngIf="form.get('code').hasError('required')">Code is required</mat-error>
-        <mat-error *ngIf="form.get('code').hasError('minlength')">Minimum length is 2 chars</mat-error>
-        <mat-error *ngIf="form.get('code').hasError('maxlength')">Maxiumum length is 4 chars</mat-error>
-        <mat-error *ngIf="form.get('code').hasError('incorrectCode')">Code must start with TF prefix</mat-error>
-        <mat-hint align="end">{{input.value?.length || 0}}/4</mat-hint>
-      </mat-form-field>
+    <div class="col-12 col-md-4">
+      <app-form-input
+        formControlName="code"
+        label="Flight Code"
+        icon="tag"
+        transform="uppercase"
+        [maxlength]="4"
+        placeholder="e.g. TF01">
+        <mat-hint align="end">{{form.get('code')?.value?.length || 0}}/4</mat-hint>
+      </app-form-input>
     </div>
-      <div class="col-sm-4">
-        <mat-form-field>
-          <textarea matInput formControlName="additionalInformation" placeholder="Additional Information"></textarea>
-        </mat-form-field>
+    <div class="col-12 col-md-8">
+      <app-form-input
+        formControlName="additionalInformation"
+        type="textarea"
+        label="Additional Information"
+        icon="info"
+        [maxlength]="500"
+        placeholder="Notes...">
+      </app-form-input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <app-form-input
+        formControlName="origin"
+        label="Origin"
+        icon="flight_takeoff"
+        [maxlength]="50"
+        placeholder="e.g. Paris">
+      </app-form-input>
+    </div>
+    <div class="col-12 col-md-6">
+      <app-form-input
+        formControlName="destination"
+        label="Destination"
+        icon="flight_land"
+        [maxlength]="50"
+        placeholder="e.g. Berlin">
+      </app-form-input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <app-form-input
+        formControlName="departureTime"
+        label="Departure Time"
+        icon="schedule"
+        type="datetime-local">
+      </app-form-input>
+    </div>
+    <div class="col-12 col-md-6">
+      <app-form-input
+        formControlName="returnTime"
+        label="Return Time"
+        icon="history_toggle_off"
+        type="datetime-local">
+      </app-form-input>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-12">
+      <mat-checkbox formControlName="withSKPlanesDiscount" color="primary" class="discount-checkbox">
+        Apply SK Planes Discount
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <h3 class="crew-section-title">
+    <mat-icon>group</mat-icon> Crew Members
+  </h3>
+
+  @for (crewMember of crew.controls; track crewMember; let index = $index) {
+    <div formArrayName="crew" class="crew-container modern-shadow">
+      <div class="row crew-header">
+        <div class="col d-flex justify-content-between align-items-center">
+          <span class="crew-title">Crew Member {{ index + 1 }}</span>
+          <button mat-icon-button color="warn" type="button" (click)="removeCrewMember(index)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
       </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <mat-form-field>
-        <input matInput formControlName="origin" placeholder="Origin" />
-        <mat-error>Code is required</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="col-sm-4">
-      <mat-form-field>
-        <input matInput formControlName="destination" placeholder="Destination" />
-        <mat-error *ngIf="form.get('code').hasError('required')">Code is required</mat-error>
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <mat-form-field>
-        <input matInput formControlName="departureTime" placeholder="Deprature time" />
-        <mat-error *ngIf="form.get('code').hasError('required')">Code is required</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="col-sm-4">
-      <mat-form-field>
-        <input matInput formControlName="returnTime" placeholder="Return time" />
-        <mat-error *ngIf="form.get('code').hasError('required')">Code is required</mat-error>
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <mat-checkbox formControlName="withSKPlanesDiscount">With SK Discount</mat-checkbox>
-    </div>
-  </div>
-  <div formArrayName="crew" class="crew-container shadow" *ngFor="let crewMember of crew.controls;index as index">
-    <div class="row crew-header">
-      <div class="col">
-        <span>Crew member - {{ index + 1 }}
-          <mat-icon class="float-right" (click)="removeCrewMember(index)">delete_forever</mat-icon>
-        </span>
+      <div class="row" [formGroupName]="index">
+        <div class="col-12 col-md-7">
+          <app-form-input
+            formControlName="name"
+            label="Name"
+            icon="person"
+            placeholder="John Doe">
+          </app-form-input>
+        </div>
+        <div class="col-12 col-md-5">
+          <app-form-input
+            formControlName="job"
+            type="select"
+            [options]="jobs"
+            label="Job Role"
+            icon="work_outline"
+            placeholder="Select Job">
+          </app-form-input>
+        </div>
       </div>
     </div>
-    <div class="row" [formGroupName]="index">
-      <div class="col-sm-5">
-        <mat-form-field>
-          <input matInput formControlName="name" placeholder="Name">
-        </mat-form-field>
-      </div>
-      <div class="col-sm-4">
-        <mat-form-field>
-          <mat-select formControlName="job" placeholder="Job">
-            <mat-option *ngFor="let job of jobs" [value]="job.value">{{ job.label }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <button mat-raised-button color="primary" class="float-right" (click)="addCrewMember()">Add crew member</button>
+  }
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <button mat-stroked-button color="primary" class="add-crew-btn w-100" type="button" (click)="addCrewMember()">
+        <mat-icon>person_add</mat-icon> Add Crew Member
+      </button>
     </div>
   </div>
 </form>

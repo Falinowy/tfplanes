@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -6,7 +6,9 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
+  standalone: false
 })
 export class LoginComponent {
   credentials = {
@@ -26,7 +28,13 @@ export class LoginComponent {
       .catch(error => this.toast.open(error.message));
   }
 
+  testLogin() {
+    this.credentials.email = 'test@wp.pl';
+    this.credentials.password = '123qweasd';
+    this.login();
+  }
+
   goToRegister() {
-      this.router.navigateByUrl('/register');
+    this.router.navigateByUrl('/register');
   }
 }
